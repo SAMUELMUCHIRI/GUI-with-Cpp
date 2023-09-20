@@ -71,7 +71,7 @@ Share your innovative projects with the community to inspire others and receive 
 This project wouldn't have been possible without the dedication and collaboration of our talented team of contributors. Meet the minds behind the Arduino Actuator Circuit:
 
 - [Daniel Maithya](https://github.com/tronics-danny) - Project Lead
-- [Stacey Kibarak](https://github.com/team-member-1-link) - Hardware Engineer
+- [Stacey Kibarak](https://github.com/Stacy2021) - Hardware Engineer
 - [Team Member 2](https://github.com/team-member-2-link) - Software Developer
 - [Samuel Njau](https://github.com/SAMUELMUCHIRI) - Documentation Specialist
 
