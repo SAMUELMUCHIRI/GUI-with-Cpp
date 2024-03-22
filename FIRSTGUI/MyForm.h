@@ -45,11 +45,16 @@ namespace FIRSTGUI {
 
 
 	private: System::Windows::Forms::TextBox^ txtSecondName;
+	private: System::Windows::Forms::Label^ lbMessage;
 
-	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::Button^ button2;
+
+	private: System::Windows::Forms::Button^ OKbutton;
+
+
+
 	private: System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel1;
+	private: System::Windows::Forms::Button^ RESETbutton;
+
 
 	private:
 		/// <summary>
@@ -68,10 +73,11 @@ namespace FIRSTGUI {
 			this->txtFirstName = (gcnew System::Windows::Forms::TextBox());
 			this->lblSecondName = (gcnew System::Windows::Forms::Label());
 			this->txtSecondName = (gcnew System::Windows::Forms::TextBox());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->lbMessage = (gcnew System::Windows::Forms::Label());
+			this->OKbutton = (gcnew System::Windows::Forms::Button());
 			this->tableLayoutPanel1 = (gcnew System::Windows::Forms::TableLayoutPanel());
+			this->RESETbutton = (gcnew System::Windows::Forms::Button());
+			this->tableLayoutPanel1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// lblFirstName
@@ -94,6 +100,7 @@ namespace FIRSTGUI {
 			this->txtFirstName->Name = L"txtFirstName";
 			this->txtFirstName->Size = System::Drawing::Size(366, 26);
 			this->txtFirstName->TabIndex = 1;
+			this->txtFirstName->Text = L"First Name";
 			// 
 			// lblSecondName
 			// 
@@ -114,37 +121,28 @@ namespace FIRSTGUI {
 			this->txtSecondName->Name = L"txtSecondName";
 			this->txtSecondName->Size = System::Drawing::Size(366, 26);
 			this->txtSecondName->TabIndex = 3;
+			this->txtSecondName->Text = L"Second Name";
 			// 
-			// label3
+			// lbMessage
 			// 
-			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(13, 195);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(51, 20);
-			this->label3->TabIndex = 4;
-			this->label3->Text = L"label3";
+			this->lbMessage->AutoSize = true;
+			this->lbMessage->Location = System::Drawing::Point(13, 195);
+			this->lbMessage->Name = L"lbMessage";
+			this->lbMessage->Size = System::Drawing::Size(107, 20);
+			this->lbMessage->TabIndex = 4;
+			this->lbMessage->Text = L"labelMessage";
 			// 
-			// button1
+			// OKbutton
 			// 
-			this->button1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
+			this->OKbutton->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
-			this->button1->Location = System::Drawing::Point(20, 360);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(192, 51);
-			this->button1->TabIndex = 5;
-			this->button1->Text = L"OK";
-			this->button1->UseVisualStyleBackColor = true;
-			// 
-			// button2
-			// 
-			this->button2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->button2->Location = System::Drawing::Point(282, 360);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(195, 51);
-			this->button2->TabIndex = 6;
-			this->button2->Text = L"RESET";
-			this->button2->UseVisualStyleBackColor = true;
+			this->OKbutton->Location = System::Drawing::Point(3, 3);
+			this->OKbutton->Name = L"OKbutton";
+			this->OKbutton->Size = System::Drawing::Size(162, 51);
+			this->OKbutton->TabIndex = 5;
+			this->OKbutton->Text = L"OK";
+			this->OKbutton->UseVisualStyleBackColor = true;
+			this->OKbutton->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
 			// tableLayoutPanel1
 			// 
@@ -153,13 +151,27 @@ namespace FIRSTGUI {
 				50)));
 			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
 				50)));
+			this->tableLayoutPanel1->Controls->Add(this->OKbutton, 0, 0);
+			this->tableLayoutPanel1->Controls->Add(this->RESETbutton, 1, 0);
 			this->tableLayoutPanel1->Location = System::Drawing::Point(12, 218);
 			this->tableLayoutPanel1->Name = L"tableLayoutPanel1";
-			this->tableLayoutPanel1->RowCount = 2;
+			this->tableLayoutPanel1->RowCount = 1;
 			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
-			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
-			this->tableLayoutPanel1->Size = System::Drawing::Size(200, 100);
+			this->tableLayoutPanel1->Size = System::Drawing::Size(336, 60);
 			this->tableLayoutPanel1->TabIndex = 7;
+			this->tableLayoutPanel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::tableLayoutPanel1_Paint);
+			// 
+			// RESETbutton
+			// 
+			this->RESETbutton->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->RESETbutton->Location = System::Drawing::Point(171, 3);
+			this->RESETbutton->Name = L"RESETbutton";
+			this->RESETbutton->Size = System::Drawing::Size(162, 51);
+			this->RESETbutton->TabIndex = 6;
+			this->RESETbutton->Text = L"RESET";
+			this->RESETbutton->UseVisualStyleBackColor = true;
+			this->RESETbutton->Click += gcnew System::EventHandler(this, &MyForm::RESETbutton_Click);
 			// 
 			// MyForm
 			// 
@@ -167,15 +179,15 @@ namespace FIRSTGUI {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(575, 543);
 			this->Controls->Add(this->tableLayoutPanel1);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button1);
-			this->Controls->Add(this->label3);
+			this->Controls->Add(this->lbMessage);
 			this->Controls->Add(this->txtSecondName);
 			this->Controls->Add(this->lblSecondName);
 			this->Controls->Add(this->txtFirstName);
 			this->Controls->Add(this->lblFirstName);
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
+			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
+			this->tableLayoutPanel1->ResumeLayout(false);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -183,5 +195,21 @@ namespace FIRSTGUI {
 #pragma endregion
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	this->lbMessage->Text = "";
+}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	String^ firstName = this->txtFirstName->Text;
+	String^ secondName = this->txtSecondName->Text;
+	this->lbMessage->Text = "Hello " + firstName + " " + secondName;
+}
+private: System::Void tableLayoutPanel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+}
+private: System::Void RESETbutton_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->txtFirstName->Text = "";
+	this->txtSecondName->Text = "";
+	this->lbMessage->Text = "";
+}
 };
 }

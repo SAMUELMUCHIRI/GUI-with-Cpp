@@ -1,0 +1,4 @@
+C:\Users\USER\Desktop\notex\402\ECE 4.2\OOP\GUI-with-Cpp\FIRSTGUI\x64\Debug\FIRSTGUI.vcxproj.AssemblyReference.cache
+C:\Users\USER\Desktop\notex\402\ECE 4.2\OOP\GUI-with-Cpp\FIRSTGUI\x64\Debug\FIRSTGUI.MyForm.resources
+C:\Users\USER\Desktop\notex\402\ECE 4.2\OOP\GUI-with-Cpp\FIRSTGUI\x64\Debug\FIRSTGUI.vcxproj.GenerateResource.cache
+C:\Users\USER\Desktop\notex\402\ECE 4.2\OOP\GUI-with-Cpp\FIRSTGUI\x64\Debug\FIRSTGUI.exe
