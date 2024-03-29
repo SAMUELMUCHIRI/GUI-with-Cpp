@@ -1,0 +1,4 @@
+C:\Users\USER\Desktop\notex\402\ECE 4.2\OOP\GUI-with-Cpp\ADDNUMBERS\x64\Debug\ADDNUMBERS.vcxproj.AssemblyReference.cache
+C:\Users\USER\Desktop\notex\402\ECE 4.2\OOP\GUI-with-Cpp\ADDNUMBERS\x64\Debug\ADDNUMBERS.MyForm.resources
+C:\Users\USER\Desktop\notex\402\ECE 4.2\OOP\GUI-with-Cpp\ADDNUMBERS\x64\Debug\ADDNUMBERS.vcxproj.GenerateResource.cache
+C:\Users\USER\Desktop\notex\402\ECE 4.2\OOP\GUI-with-Cpp\ADDNUMBERS\x64\Debug\ADDNUMBERS.exe
