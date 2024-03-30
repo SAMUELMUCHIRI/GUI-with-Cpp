@@ -1,4 +1,9 @@
 #pragma once
+#include <sstream>
+#include <string>
+#include <iostream>
+#include <stack>
+
 
 namespace ADDNUMBERS {
 
@@ -8,7 +13,10 @@ namespace ADDNUMBERS {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-	using namespace System;
+	using namespace std;
+	using namespace System::IO;
+	using namespace System::Text;
+
 
 	/// <summary>
 	/// Summary for MyForm
@@ -39,7 +47,7 @@ namespace ADDNUMBERS {
 	private:
 		   
 		
-	private: System::Windows::Forms::Button^ seven;
+
 	private: System::Windows::Forms::Button^ five;
 
 	protected:
@@ -115,6 +123,8 @@ namespace ADDNUMBERS {
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ ANSWER;
 	private: System::Windows::Forms::Button^ button1;
+private: System::Windows::Forms::Button^ button2;
+private: System::Windows::Forms::Button^ button3;
 
 
 
@@ -133,7 +143,7 @@ namespace ADDNUMBERS {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->seven = (gcnew System::Windows::Forms::Button());
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->five = (gcnew System::Windows::Forms::Button());
 			this->two = (gcnew System::Windows::Forms::Button());
 			this->Eight = (gcnew System::Windows::Forms::Button());
@@ -156,23 +166,9 @@ namespace ADDNUMBERS {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->ANSWER = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
-			// 
-			// seven
-			// 
-			this->seven->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->seven->Font = (gcnew System::Drawing::Font(L"Cascadia Mono", 14, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->seven->Location = System::Drawing::Point(5, 258);
-			this->seven->MaximumSize = System::Drawing::Size(163, 50);
-			this->seven->MinimumSize = System::Drawing::Size(113, 50);
-			this->seven->Name = L"seven";
-			this->seven->Size = System::Drawing::Size(113, 50);
-			this->seven->TabIndex = 11;
-			this->seven->Text = L"7";
-			this->seven->UseVisualStyleBackColor = true;
-			this->seven->Click += gcnew System::EventHandler(this, &MyForm::seven_Click);
 			// 
 			// five
 			// 
@@ -180,7 +176,7 @@ namespace ADDNUMBERS {
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->five->Font = (gcnew System::Drawing::Font(L"Cascadia Mono", 14, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->five->Location = System::Drawing::Point(183, 334);
+			this->five->Location = System::Drawing::Point(183, 333);
 			this->five->MaximumSize = System::Drawing::Size(163, 50);
 			this->five->MinimumSize = System::Drawing::Size(113, 50);
 			this->five->Name = L"five";
@@ -290,17 +286,18 @@ namespace ADDNUMBERS {
 			// 
 			this->R_oot->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
+			this->R_oot->BackColor = System::Drawing::SystemColors::Window;
 			this->R_oot->Font = (gcnew System::Drawing::Font(L"Cascadia Mono", 14, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->R_oot->ForeColor = System::Drawing::Color::DarkOrchid;
+			this->R_oot->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"R_oot.Image")));
 			this->R_oot->Location = System::Drawing::Point(5, 189);
 			this->R_oot->MaximumSize = System::Drawing::Size(163, 50);
 			this->R_oot->MinimumSize = System::Drawing::Size(113, 50);
 			this->R_oot->Name = L"R_oot";
 			this->R_oot->Size = System::Drawing::Size(113, 50);
 			this->R_oot->TabIndex = 30;
-			this->R_oot->Text = L"ROOT";
-			this->R_oot->UseVisualStyleBackColor = true;
+			this->R_oot->UseVisualStyleBackColor = false;
 			this->R_oot->Click += gcnew System::EventHandler(this, &MyForm::button9_Click);
 			// 
 			// divide
@@ -420,6 +417,7 @@ namespace ADDNUMBERS {
 			// 
 			this->clear->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
+			this->clear->BackColor = System::Drawing::Color::LightSteelBlue;
 			this->clear->Font = (gcnew System::Drawing::Font(L"Cascadia Mono", 14, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->clear->ForeColor = System::Drawing::Color::DarkOrchid;
@@ -430,13 +428,14 @@ namespace ADDNUMBERS {
 			this->clear->Size = System::Drawing::Size(113, 50);
 			this->clear->TabIndex = 39;
 			this->clear->Text = L"CLR";
-			this->clear->UseVisualStyleBackColor = true;
+			this->clear->UseVisualStyleBackColor = false;
 			this->clear->Click += gcnew System::EventHandler(this, &MyForm::clear_Click);
 			// 
 			// square
 			// 
 			this->square->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
+			this->square->BackColor = System::Drawing::SystemColors::Window;
 			this->square->Font = (gcnew System::Drawing::Font(L"Cascadia Mono", 14, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->square->ForeColor = System::Drawing::Color::DarkOrchid;
@@ -446,8 +445,9 @@ namespace ADDNUMBERS {
 			this->square->Name = L"square";
 			this->square->Size = System::Drawing::Size(113, 50);
 			this->square->TabIndex = 38;
-			this->square->Text = L"SQR";
-			this->square->UseVisualStyleBackColor = true;
+			this->square->Text = L")";
+			this->square->UseVisualStyleBackColor = false;
+			this->square->Click += gcnew System::EventHandler(this, &MyForm::square_Click);
 			// 
 			// power
 			// 
@@ -462,8 +462,9 @@ namespace ADDNUMBERS {
 			this->power->Name = L"power";
 			this->power->Size = System::Drawing::Size(113, 50);
 			this->power->TabIndex = 37;
-			this->power->Text = L"PWR";
+			this->power->Text = L"(";
 			this->power->UseVisualStyleBackColor = true;
+			this->power->Click += gcnew System::EventHandler(this, &MyForm::power_Click);
 			// 
 			// Display
 			// 
@@ -508,6 +509,7 @@ namespace ADDNUMBERS {
 			this->ANSWER->Name = L"ANSWER";
 			this->ANSWER->Size = System::Drawing::Size(650, 70);
 			this->ANSWER->TabIndex = 43;
+			this->ANSWER->TextAlign = System::Drawing::ContentAlignment::BottomRight;
 			this->ANSWER->Click += gcnew System::EventHandler(this, &MyForm::label2_Click);
 			// 
 			// button1
@@ -526,12 +528,46 @@ namespace ADDNUMBERS {
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
+			// button2
+			// 
+			this->button2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->button2->Font = (gcnew System::Drawing::Font(L"Cascadia Mono", 14, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button2->Location = System::Drawing::Point(5, 258);
+			this->button2->MaximumSize = System::Drawing::Size(163, 50);
+			this->button2->MinimumSize = System::Drawing::Size(113, 50);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(113, 50);
+			this->button2->TabIndex = 45;
+			this->button2->Text = L"7";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
+			// 
+			// button3
+			// 
+			this->button3->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->button3->Font = (gcnew System::Drawing::Font(L"Cascadia Mono", 14, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button3->Location = System::Drawing::Point(183, 334);
+			this->button3->MaximumSize = System::Drawing::Size(163, 50);
+			this->button3->MinimumSize = System::Drawing::Size(113, 50);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(113, 50);
+			this->button3->TabIndex = 46;
+			this->button3->Text = L"5";
+			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &MyForm::button3_Click_1);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::Turquoise;
 			this->ClientSize = System::Drawing::Size(678, 544);
+			this->Controls->Add(this->button3);
+			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->ANSWER);
 			this->Controls->Add(this->label1);
@@ -553,8 +589,6 @@ namespace ADDNUMBERS {
 			this->Controls->Add(this->one);
 			this->Controls->Add(this->Eight);
 			this->Controls->Add(this->two);
-			this->Controls->Add(this->five);
-			this->Controls->Add(this->seven);
 			this->MaximumSize = System::Drawing::Size(700, 600);
 			this->MinimumSize = System::Drawing::Size(670, 600);
 			this->Name = L"MyForm";
@@ -587,6 +621,8 @@ private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e
 	this->Display->Text = currentdisplay + "3";
 }
 private: System::Void button9_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ currentdisplay = this->Display->Text;
+	this->Display->Text = currentdisplay + "(3.14159265)";
 }
 private: System::Void button10_Click(System::Object^ sender, System::EventArgs^ e) {
 	String^ currentdisplay = this->Display->Text;
@@ -596,7 +632,7 @@ private: System::Void button10_Click(System::Object^ sender, System::EventArgs^ 
 private: System::Void button11_Click(System::Object^ sender, System::EventArgs^ e) {
 	String^ currentdisplay = this->Display->Text;
 
-	this->Display->Text = currentdisplay + "X";
+	this->Display->Text = currentdisplay + "*";
 }
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 	String^ currentdisplay = this->Display->Text;
@@ -608,10 +644,87 @@ private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e)
 }
 private: System::Void seven_Click(System::Object^ sender, System::EventArgs^ e) {
 	String^ currentdisplay = this->Display->Text;
-
+	float seven;
+	seven = System::Single::Parse(currentdisplay);
+	
 	this->Display->Text = currentdisplay + "7";
+
 }
 private: System::Void equals_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ express = this->Display->Text;
+	/// <summary>
+	/// /
+	/// </summary>
+	
+
+	StringReader^ reader = gcnew StringReader(express);
+	stack<float> nums;
+	stack<wchar_t> ops;
+
+	int ch;
+	while ((ch = reader->Read()) != -1) {
+		wchar_t c = static_cast<wchar_t>(ch);
+		if (Char::IsDigit(c) || c == '.') {
+			StringBuilder^ sb = gcnew StringBuilder();
+			sb->Append(c);
+			while (Char::IsDigit(reader->Peek()) || reader->Peek() == '.') {
+				sb->Append(static_cast<wchar_t>(reader->Read()));
+			}
+			float num = Convert::ToSingle(sb->ToString());
+			nums.push(num);
+		}
+		else if (c == '(') {
+			ops.push(c);
+		}
+		else if (c == ')') {
+			while (ops.top() != L'(') {
+				float b = nums.top();
+				nums.pop();
+				float a = nums.top();
+				nums.pop();
+				wchar_t op = ops.top();
+				ops.pop();
+				if (op == L'+') nums.push(a + b);
+				else if (op == L'-') nums.push(a - b);
+				else if (op == L'*') nums.push(a * b);
+				else if (op == L'/') nums.push(a / b);
+			}
+			ops.pop(); // pop '('
+		}
+		else if (c == L'+' || c == L'-' || c == L'*' || c == L'/') {
+			while (!ops.empty() && ((c == L'+' || c == L'-') && (ops.top() == L'*' || ops.top() == L'/'))) {
+				float b = nums.top();
+				nums.pop();
+				float a = nums.top();
+				nums.pop();
+				wchar_t op = ops.top();
+				ops.pop();
+				if (op == L'+') nums.push(a + b);
+				else if (op == L'-') nums.push(a - b);
+				else if (op == L'*') nums.push(a * b);
+				else if (op == L'/') nums.push(a / b);
+			}
+			ops.push(c);
+		}
+	}
+
+	while (!ops.empty()) {
+		float b = nums.top();
+		nums.pop();
+		float a = nums.top();
+		nums.pop();
+		wchar_t op = ops.top();
+		ops.pop();
+		if (op == L'+') nums.push(a + b);
+		else if (op == L'-') nums.push(a - b);
+		else if (op == L'*') nums.push(a * b);
+		else if (op == L'/') nums.push(a / b);
+	}
+
+	float result = nums.top();;
+	String^ result1 = result.ToString();
+
+	this->ANSWER->Text = result1;
 }
 private: System::Void zero_Click(System::Object^ sender, System::EventArgs^ e) {
 	String^ currentdisplay = this->Display->Text;
@@ -663,6 +776,23 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void clear_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Display->Text = "";
 
+}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ currentdisplay = this->Display->Text;
+	this->Display->Text = currentdisplay + "7";
+}
+private: System::Void button3_Click_1(System::Object^ sender, System::EventArgs^ e) {
+	String^ currentdisplay = this->Display->Text;
+	this->Display->Text = currentdisplay + "5";
+}
+private: System::Void power_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ currentdisplay = this->Display->Text;
+	this->Display->Text = currentdisplay + "(";
+
+}
+private: System::Void square_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ currentdisplay = this->Display->Text;
+	this->Display->Text = currentdisplay + ")";
 }
 };
 }
